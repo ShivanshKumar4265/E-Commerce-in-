@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "811110829724",
+    "firebase_url": "https://e-commerce-829bf-default-rtdb.firebaseio.com",
+    "project_id": "e-commerce-829bf",
+    "storage_bucket": "e-commerce-829bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:811110829724:android:4ba6350c0d690eb3ffa759",
+        "android_client_info": {
+          "package_name": "com.inventics.e_commerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBODkqTJAPw3sKj5I35QxXffSTxdYbNKGo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

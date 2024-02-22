@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/productImage"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_ballot_24" />
+
+            <TextView
+                android:id="@+id/category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/productImage"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:text="Category"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/productDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="20dp"
+                android:text="Product Description"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+
+            <RatingBar
+                android:id="@+id/productRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_below="@+id/category"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="20dp"
+                android:layout_alignParentEnd="true"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/productDescription"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="2dp"
+                android:text="100 INR"
+                />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
