@@ -1,4 +1,4 @@
-package com.inventics.e_commerce;
+package com.inventics.e_commerce.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.google.firebase.database.FirebaseDatabase;
+import com.inventics.e_commerce.R;
 
 public class SplashActivity extends AppCompatActivity {
     @Override

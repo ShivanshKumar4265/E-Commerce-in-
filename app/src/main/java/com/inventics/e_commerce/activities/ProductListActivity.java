@@ -1,9 +1,11 @@
-package com.inventics.e_commerce;
+package com.inventics.e_commerce.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.os.Bundle;
+
+import com.inventics.e_commerce.R;
 
 public class ProductListActivity extends AppCompatActivity {
 
