@@ -17,15 +17,22 @@ public class SplashActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_splash);
         FirebaseDatabase.getInstance().getReference().child("shivanshCheck").setValue("shivans is connected");
+
+        startSplashActivity();
+
+    }
+
+    private void startSplashActivity() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent intent = new Intent(SplashActivity.this, ProductListActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
             }
         }, 3000);
-
 
     }
 }

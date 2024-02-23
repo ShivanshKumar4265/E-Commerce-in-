@@ -6,11 +6,11 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp">
 
@@ -28,7 +28,7 @@
                 android:src="@drawable/baseline_ballot_24" />
 
             <TextView
-                android:id="@+id/category"
+                android:id="@+id/productCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/productImage"
@@ -39,40 +39,52 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/productDescription"
+                android:id="@+id/productTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/category"
+                android:layout_below="@id/productCategory"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginEnd="20dp"
-                android:text="Product Description"
+                android:maxLines="2"
+                android:text="Product Title"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
 
             <RatingBar
                 android:id="@+id/productRating"
+                style="?android:attr/ratingBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/ratingBarStyleSmall"
-                android:layout_below="@+id/category"
+                android:layout_below="@+id/productCategory"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="2dp"
                 android:layout_marginEnd="20dp"
-                android:layout_alignParentEnd="true"
-                />
+                android:visibility="gone" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/productPrice"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/productDescription"
+                android:layout_below="@+id/productTitle"
                 android:layout_marginStart="20dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginEnd="20dp"
                 android:layout_marginTop="2dp"
-                android:text="100 INR"
-                />
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
+                android:text="100 INR" />
+
+            <TextView
+                android:id="@+id/productRateCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/productRating"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
+                android:text="Rated by"
+                android:visibility="gone" />
 
         </RelativeLayout>
 
