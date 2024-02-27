@@ -206,7 +206,7 @@ public class AddProductActivity extends AppCompatActivity {
             public void onSuccess(Void unused) {
                 Toast.makeText(AddProductActivity.this, "Data Uploaded", Toast.LENGTH_SHORT).show();
                 progress.dismiss();
-                startActivity(new Intent(AddProductActivity.this,ProductListActivity.class));
+                startActivity(new Intent(AddProductActivity.this,MainActivity.class));
                 finish();
             }
         }).addOnFailureListener(new OnFailureListener() {

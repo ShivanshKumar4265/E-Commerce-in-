@@ -241,7 +241,8 @@ public class UpdateProductActivity extends AppCompatActivity {
             public void onSuccess(Void unused) {
                 Toast.makeText(UpdateProductActivity.this, "Data Uploaded", Toast.LENGTH_SHORT).show();
                 progress.dismiss();
-                startActivity(new Intent(UpdateProductActivity.this, ProductListActivity.class));
+                startActivity(new Intent(UpdateProductActivity.this, MainActivity.class));
+
                 finish();
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -254,6 +255,7 @@ public class UpdateProductActivity extends AppCompatActivity {
 
 
     }
+
 
     private void findingALlTheViews() {
         editProductCategory = findViewById(R.id.Et_editProductCategory);
