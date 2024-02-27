@@ -7,6 +7,10 @@ android {
     namespace = "com.inventics.e_commerce"
     compileSdk = 34
 
+    buildFeatures{
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.inventics.e_commerce"
         minSdk = 24

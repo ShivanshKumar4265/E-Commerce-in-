@@ -2,14 +2,14 @@ package com.inventics.e_commerce.modal;
 
 public class Product {
 
-    String category,description,image,title;
+    String category, description, image, title;
     int id;
+    private String key;
 
     Rating rating;
 
 
-
-    Double price;
+    Float price;
 
     public Rating getRating() {
         return rating;
@@ -18,6 +18,15 @@ public class Product {
     public void setRating(Rating rating) {
         this.rating = rating;
     }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
 
     public void setCategory(String category) {
         this.category = category;
@@ -36,7 +45,7 @@ public class Product {
     }
 
 
-    public void setPrice(Double price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
@@ -58,7 +67,7 @@ public class Product {
     }
 
 
-    public Double getPrice() {
+    public Float getPrice() {
         return price;
     }
 
@@ -71,7 +80,7 @@ public class Product {
     }
 
 
-    public Product(String category, String description, String image, String title, int id, Double price,Rating rating) {
+    public Product(String category, String description, String image, String title, int id, Float price, Rating rating) {
         this.category = category;
         this.description = description;
         this.image = image;
@@ -81,10 +90,9 @@ public class Product {
         this.rating = rating;
     }
 
-    public  Product(){
+    public Product() {
 
     }
-
 
 
     public static class Rating {
@@ -95,7 +103,8 @@ public class Product {
             this.count = count;
             this.rate = rate;
         }
-        public Rating(){
+
+        public Rating() {
 
         }
 

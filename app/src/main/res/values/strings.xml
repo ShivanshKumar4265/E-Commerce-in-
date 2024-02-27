@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">E-Commerce</string>
+    <string name="Delete">Delete</string>
+    <string name="Update">Update</string>
+    <string name="Product_Description">Product Description</string>
+    <string name="edit_product_category">Edit Product Category</string>
+    <string name="click_here_to_edit_product_image">Click Here to edit product image</string>
+    <string name="edit_product_title">Edit Product Title</string>
+    <string name="edit_product_description">Edit Product Description</string>
+    <string name="edit_product_price">Edit Product Price</string>
+    <string name="update_product">Update Product</string>
 </resources>

@@ -1,17 +1,15 @@
 package com.inventics.e_commerce.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,30 +42,28 @@ public class ProductListActivity extends AppCompatActivity {
         productRecyclerView = findViewById(R.id.rv_productList);
         progressBar = findViewById(R.id.progressBar_productList);
 
+        settingUpRecyclerView(productRecyclerView);
 
-       settingUpRecyclerView(productRecyclerView);
-
-       fab_addProduct.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               intentToProductDescriptionActivity();
-           }
-       });
+        fab_addProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intentToProductDescriptionActivity();
+            }
+        });
 
         gettingProductData();
 
     }
 
     private void intentToProductDescriptionActivity() {
-        startActivity(new Intent(ProductListActivity.this,ProductDescriptionActivity.class));
+        startActivity(new Intent(ProductListActivity.this, AddProductActivity.class));
     }
 
     private void settingUpRecyclerView(RecyclerView productRecyclerView) {
         productRecyclerView.setHasFixedSize(true);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
         productRecyclerView.setLayoutManager(gridLayoutManager);
     }
-
 
     private void gettingProductData() {
 
@@ -78,11 +74,21 @@ public class ProductListActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 progressBar.setVisibility(View.VISIBLE);
+                /**
+                 * Clearing all the data
+                 */
+
+                data.clear();
+                Log.i("Snapshot", snapshot.toString());
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Product productData = dataSnapshot.getValue(Product.class);
-                    Log.i("productDataTitle", productData.getTitle().toString());
-                    Log.i("productDataDescription", productData.getDescription().toString());
-                    Log.i("productDataImage", productData.getImage().toString());
+                    //Getting the key of the product node
+                    if (productData != null) {
+                        productData.setKey(dataSnapshot.getKey());
+                    }
+                    Log.i("productDataTitle", productData.getTitle());
+                    Log.i("productDataDescription", productData.getDescription());
+                    Log.i("productDataImage", productData.getImage());
                     data.add(productData);
 
                 }
@@ -100,7 +106,6 @@ public class ProductListActivity extends AppCompatActivity {
 
         });
     }
-
 
 
 }

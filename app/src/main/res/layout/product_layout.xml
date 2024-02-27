@@ -5,12 +5,11 @@
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/productCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="10dp"
+        android:layout_margin="2dp"
+        android:padding="5dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp">
 
@@ -24,7 +23,7 @@
                 android:layout_height="250dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:scaleType="centerCrop"
+                android:scaleType="fitCenter"
                 android:src="@drawable/baseline_ballot_24" />
 
             <TextView
