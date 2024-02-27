@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.ECommerce" parent="Base.Theme.ECommerce" />
+
+
+    <style name="WhiteTitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>

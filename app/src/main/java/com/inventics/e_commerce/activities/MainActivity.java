@@ -50,13 +50,26 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 if (item.getItemId() == R.id.homeFragment) {
+
                     replaceFragment(new ProductListFragment());
+                    getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Product list</font>")); // Set the text color
+
                 } else if (item.getItemId() == R.id.cartFragment) {
+
                     replaceFragment(new CartFragment());
+                    getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Your Cart</font>"));
+
                 } else if (item.getItemId() == R.id.accountFragment) {
-                    replaceFragment(new CategoryFragment());
-                } else if (item.getItemId() == R.id.categoryFragment) {
+
                     replaceFragment(new AccountFragment());
+                    getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Your Account</font>"));
+
+                } else if (item.getItemId() == R.id.categoryFragment) {
+
+                    replaceFragment(new CategoryFragment());
+                    getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Product Category</font>"));
+
+
                 }
                 return true;
             }
