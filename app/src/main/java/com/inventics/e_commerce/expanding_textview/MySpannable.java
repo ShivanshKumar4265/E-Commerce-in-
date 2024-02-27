@@ -1,4 +1,4 @@
-package com.inventics.e_commerce.java_class;
+package com.inventics.e_commerce.expanding_textview;
 
 import android.graphics.Color;
 import android.text.TextPaint;

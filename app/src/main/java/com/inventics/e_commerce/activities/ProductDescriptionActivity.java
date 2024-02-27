@@ -27,7 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.inventics.e_commerce.R;
-import com.inventics.e_commerce.java_class.MySpannable;
+import com.inventics.e_commerce.expanding_textview.MySpannable;
 import com.inventics.e_commerce.modal.Product;
 
 
@@ -38,7 +38,6 @@ public class ProductDescriptionActivity extends AppCompatActivity {
     RatingBar productRating;
     Button deleteData, updateData;
     String p_id;
-
     SharedPreferences myPreferences;
 
     @Override
@@ -210,11 +209,7 @@ public class ProductDescriptionActivity extends AppCompatActivity {
 
     }
 
-    private static SpannableStringBuilder addClickablePartTextViewResizable(final Spanned strSpanned,
-                                                                            final TextView tv,
-                                                                            final int maxLine,
-                                                                            final String spanableText,
-                                                                            final boolean viewMore) {
+    private static SpannableStringBuilder addClickablePartTextViewResizable(final Spanned strSpanned, final TextView tv, final int maxLine, final String spanableText, final boolean viewMore) {
         String str = strSpanned.toString();
         SpannableStringBuilder ssb = new SpannableStringBuilder(strSpanned);
 
@@ -242,6 +237,4 @@ public class ProductDescriptionActivity extends AppCompatActivity {
         return ssb;
 
     }
-
-
-}
+    }

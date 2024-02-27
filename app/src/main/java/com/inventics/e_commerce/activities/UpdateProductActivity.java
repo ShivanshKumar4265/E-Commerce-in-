@@ -56,7 +56,6 @@ public class UpdateProductActivity extends AppCompatActivity {
     TextView clickHereToEditImage;
 
     TextInputEditText editProductCategory, editProductTitle, editProductDescription, editProductPrice;
-
     Button updateData;
 
     String p_id;
