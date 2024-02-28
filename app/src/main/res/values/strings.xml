@@ -14,4 +14,6 @@
     <string name="dummy_email">Dummy Email</string>
     <string name="dummy_name">Dummy Name</string>
     <string name="_91_123456789">+91 123456789</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="verify_otp">Verify OTP</string>
 </resources>

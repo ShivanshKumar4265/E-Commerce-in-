@@ -1,10 +1,12 @@
 package com.inventics.e_commerce.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +27,7 @@ public class SignUpActivity extends AppCompatActivity {
     TextInputEditText enterYourNumber;
 
     String UserPhoneNumber;
+    ProgressBar progressBar_sendOTP;
     FirebaseAuth firebaseAuth;
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
@@ -51,6 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
         enterYourNumber = findViewById(R.id.enterYourPhoneNumber);
         firebaseAuth = FirebaseAuth.getInstance();
         Log.i("i_firebaseAuth",firebaseAuth.toString());
+        progressBar_sendOTP = findViewById(R.id.progressBar_sendOTP);
 
     }
 
@@ -58,6 +62,7 @@ public class SignUpActivity extends AppCompatActivity {
         sendOtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar_sendOTP.setVisibility(View.VISIBLE);
                 sendOtpOnUserMobile();
             }
         });
@@ -66,6 +71,9 @@ public class SignUpActivity extends AppCompatActivity {
     private void sendOtpOnUserMobile() {
         UserPhoneNumber = enterYourNumber.getText().toString();// User's phone number
         Log.i("i_UserPhoneNumber",UserPhoneNumber);
+
+
+
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(firebaseAuth)
                         .setPhoneNumber(UserPhoneNumber)       // Phone number to verify
@@ -92,7 +100,11 @@ public class SignUpActivity extends AppCompatActivity {
                                 super.onCodeSent(s, forceResendingToken);
                                 Log.d("i_otp", s);
                                 Log.d("i_forceResendingToken",forceResendingToken.toString());
-
+                                Intent intent = new Intent(SignUpActivity.this,VerifyOtpActivity.class);
+                                intent.putExtra("OTP",s);
+                                progressBar_sendOTP.setVisibility(View.GONE);
+                                startActivity(intent);
+                                finish();
                             }
                         })
                         .build();
