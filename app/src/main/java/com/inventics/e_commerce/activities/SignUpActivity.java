@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 public class SignUpActivity extends AppCompatActivity {
     Button sendOtp;
     TextInputEditText enterYourNumber;
+    TextView alreadyHaveAnAccount;
 
     String UserPhoneNumber;
     ProgressBar progressBar_sendOTP;
@@ -55,6 +57,7 @@ public class SignUpActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         Log.i("i_firebaseAuth",firebaseAuth.toString());
         progressBar_sendOTP = findViewById(R.id.progressBar_sendOTP);
+        alreadyHaveAnAccount = findViewById(R.id.alreadyHaveAnAcccount);
 
     }
 
@@ -66,6 +69,19 @@ public class SignUpActivity extends AppCompatActivity {
                 sendOtpOnUserMobile();
             }
         });
+
+        alreadyHaveAnAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intentToLogInACtivity();
+            }
+        });
+
+
+    }
+
+    private void intentToLogInACtivity() {
+        startActivity(new Intent(SignUpActivity.this,LogInActivity.class));
     }
 
     private void sendOtpOnUserMobile() {
