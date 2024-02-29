@@ -1,66 +1,303 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.AccountFragment">
 
-    <ImageView
-        android:id="@+id/userImage"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:src="@drawable/profile_svg" />
 
-    <TextView
-        android:id="@+id/userName"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/userImage"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/textview_background"
-        android:gravity="center"
-        android:text="User Name"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:typeface="monospace" />
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="190dp">
+           <de.hdodenhof.circleimageview.CircleImageView
+               android:id="@+id/circleImageView"
+               android:layout_width="150dp"
+               android:layout_height="150dp"
+               android:layout_centerHorizontal="true"
+               android:layout_marginTop="30dp"
+               android:background="@drawable/cirecular_background"
+               android:src="@drawable/profile_blond"/>
+
+           <androidx.cardview.widget.CardView
+               android:layout_width="25sp"
+               android:layout_height="25sp"
+               android:layout_alignBottom="@+id/circleImageView"
+               android:layout_marginStart="-30dp"
+               android:layout_marginEnd="8dp"
+               android:layout_marginBottom="15dp"
+               android:layout_toEndOf="@+id/circleImageView"
+               app:cardBackgroundColor="#FFA074"
+               app:cardCornerRadius="30dp">
+
+               <de.hdodenhof.circleimageview.CircleImageView
+                   android:layout_width="18sp"
+                   android:layout_height="18sp"
+                   android:layout_gravity="center"
+                   android:src="@drawable/baseline_edit_24"
+                   app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
+                   app:layout_constraintEnd_toEndOf="@+id/circleImageView" />
+
+           </androidx.cardview.widget.CardView>
+
+       </RelativeLayout>
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="User Name"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:typeface="serif"
+            app:layout_constraintEnd_toEndOf="@+id/circleImageView"
+            app:layout_constraintStart_toStartOf="@+id/circleImageView"
+            app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+
+        <TextView
+            android:id="@+id/userContactNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="+91 1234567890"
+            android:textSize="18sp"
+            android:typeface="monospace"
+            app:layout_constraintEnd_toEndOf="@+id/userName"
+            app:layout_constraintStart_toStartOf="@+id/userName"
+            app:layout_constraintTop_toBottomOf="@+id/userName" />
+
+        <TextView
+            android:id="@+id/userMailId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="example@gmail.com"
+            android:textSize="18sp"
+            android:typeface="monospace"
+            app:layout_constraintEnd_toEndOf="@+id/userContactNumber"
+            app:layout_constraintStart_toStartOf="@+id/userContactNumber"
+            app:layout_constraintTop_toBottomOf="@+id/userContactNumber" />
 
 
-    <TextView
-        android:id="@+id/userEmailId"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/userName"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/textview_background"
-        android:gravity="center"
-        android:text="xyz@gmail.com"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:typeface="monospace" />
+        <RelativeLayout
+            android:id="@+id/orderHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/userMailId">
+
+            <ImageView
+                android:id="@+id/iv_clock"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/clock" />
 
 
-    <TextView
-        android:id="@+id/userContactNumber"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/userEmailId"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/textview_background"
-        android:gravity="center"
-        android:text="@string/_91_123456789"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:typeface="monospace" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@+id/iv_clock"
+                android:text="Order History"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:rotation="180"
+                android:src="@drawable/baseline_arrow_back_ios_24" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/shippingAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/orderHistory">
+
+            <ImageView
+                android:id="@+id/iv_location"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/location" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@+id/iv_location"
+                android:text="Shipping Address"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:rotation="180"
+                android:src="@drawable/baseline_arrow_back_ios_24" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/createRequest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/shippingAddress">
+
+            <ImageView
+                android:id="@+id/iv_calendar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/calendar" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@+id/iv_calendar"
+                android:text="Create Request"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:rotation="180"
+                android:src="@drawable/baseline_arrow_back_ios_24" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/privacyPolisy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/createRequest">
+
+            <ImageView
+                android:id="@+id/iv_privacy"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/privacy" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@+id/iv_privacy"
+                android:text="Privacy Policy"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:rotation="180"
+                android:src="@drawable/baseline_arrow_back_ios_24" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/privacyPolisy">
+
+            <ImageView
+                android:id="@+id/iv_setting"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/setting" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@+id/iv_setting"
+                android:text="Setting"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:rotation="180"
+                android:src="@drawable/baseline_arrow_back_ios_24" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/logOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/setting">
+
+            <ImageView
+                android:id="@+id/iv_LogOut"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/logout" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@+id/iv_LogOut"
+                android:text="Log Out"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:rotation="180"
+                android:src="@drawable/baseline_arrow_back_ios_24" />
+        </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>
