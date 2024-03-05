@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rootRelativeLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.EditProfileActivity">
+
+
+    <LinearLayout
+        android:layout_marginTop="70dp"
+        android:id="@+id/ll_EditImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circleImageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/cirecular_background"
+                android:src="@drawable/profile_blond" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/editImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Click here to edit image"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/circleImageView"
+            app:layout_constraintStart_toStartOf="@+id/circleImageView"
+            app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/ll_EditImage"
+        android:layout_width="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Il_enterName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/enterName"
+                android:hint="Enter Name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="15dp"
+            android:id="@+id/Il_enterNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/enterNumber"
+                android:hint="Enter Phone Number"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/enterEmail"
+                android:hint="Enter Email Id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Submit"
+            />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

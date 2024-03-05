@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Product List</font>"));
@@ -52,22 +51,22 @@ public class MainActivity extends AppCompatActivity {
                 if (item.getItemId() == R.id.homeFragment) {
 
                     replaceFragment(new ProductListFragment());
-                    getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Product list</font>")); // Set the text color
+//                    getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Product list</font>")); // Set the text color
 
                 } else if (item.getItemId() == R.id.cartFragment) {
 
                     replaceFragment(new CartFragment());
-                    getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Your Cart</font>"));
+//                    getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Your Cart</font>"));
 
                 } else if (item.getItemId() == R.id.accountFragment) {
 
                     replaceFragment(new AccountFragment());
-                    getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Your Account</font>"));
+//                    getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Your Account</font>"));
 
                 } else if (item.getItemId() == R.id.categoryFragment) {
 
                     replaceFragment(new CategoryFragment());
-                    getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Product Category</font>"));
+//                    getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Product Category</font>"));
 
 
                 }

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.AccountFragment">
+
 
 
     <LinearLayout
@@ -27,6 +29,7 @@
                 android:src="@drawable/profile_blond" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/editProfile"
                 android:layout_width="25sp"
                 android:layout_height="25sp"
                 android:layout_alignBottom="@+id/circleImageView"
@@ -38,6 +41,7 @@
                 app:cardCornerRadius="30dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/editProfile1"
                     android:layout_width="18sp"
                     android:layout_height="18sp"
                     android:layout_gravity="center"

@@ -8,11 +8,14 @@ import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -32,19 +35,24 @@ import com.inventics.e_commerce.modal.Product;
 
 
 public class ProductDescriptionActivity extends AppCompatActivity {
-    ImageView productImage1, productImage2, productImage3;
+    ImageView productImage1, productImage2, productImage3, addToCart, removeFromCart, slide;
+    int paddingL=0;
+    LinearLayout addAndRemoveProduct;
+    RelativeLayout addAndRemoveProduct1;
     ViewFlipper viewFlipper;
-    TextView productCategory, productTitle, productDescription, productPrice, productRateCount;
+    TextView productCategory, productTitle, productDescription, productPrice, productRateCount, numberOfProductAdded;
     RatingBar productRating;
     Button deleteData, updateData;
+
+    int totalItem = 0;
     String p_id;
     SharedPreferences myPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_description);
-
+        setContentView(R.layout.activity_product_description_test);
+//        getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Product Description</font>"));
 
         findingAllTheViewsById();
 
@@ -52,6 +60,11 @@ public class ProductDescriptionActivity extends AppCompatActivity {
 
         getDescriptionOfTheProduct();
 
+        handleSetOnClickListener();
+
+    }
+
+    private void handleSetOnClickListener() {
         deleteData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +79,29 @@ public class ProductDescriptionActivity extends AppCompatActivity {
             }
         });
 
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                totalItem += 1;
+                setCount(totalItem);
+
+            }
+        });
+
+        removeFromCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                totalItem -= 1;
+                setCount(totalItem);
+            }
+        });
+
+        slide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                slideLeft(addAndRemoveProduct1);
+            }
+        });
 
     }
 
@@ -88,6 +124,14 @@ public class ProductDescriptionActivity extends AppCompatActivity {
         productRating = findViewById(R.id.productRating);
         deleteData = findViewById(R.id.deleteData);
         updateData = findViewById(R.id.updateData);
+        addAndRemoveProduct1 = findViewById(R.id.addAndRemoveProduct1);
+
+        addToCart = findViewById(R.id.addToCart);
+        removeFromCart = findViewById(R.id.removeFromCart);
+        numberOfProductAdded = findViewById(R.id.numberOfProductAdded);
+
+        slide = findViewById(R.id.slide);
+        addAndRemoveProduct = findViewById(R.id.addRemoveProduct);
     }
 
     private void gettingProductKeyViaSharedPreference() {
@@ -144,7 +188,7 @@ public class ProductDescriptionActivity extends AppCompatActivity {
                                 .into(productImage3);
 
                         viewFlipper.startFlipping();
-                        makeTextViewResizable(productDescription,2,"...Read more",true);
+                        makeTextViewResizable(productDescription, 2, "...Read more", true);
                     } else {
                         // Handle the case where the product object is null
                         Toast.makeText(ProductDescriptionActivity.this, "Product not found", Toast.LENGTH_SHORT).show();
@@ -237,4 +281,91 @@ public class ProductDescriptionActivity extends AppCompatActivity {
         return ssb;
 
     }
+
+
+    private void setCount(int totalItem) {
+
+
+        if (totalItem >= 0) {
+            numberOfProductAdded.setText("  " + totalItem + "  ");
+        }
+
     }
+
+
+    private void slideLeft(View view) {
+
+        if (paddingL==0){
+            paddingL=addAndRemoveProduct1.getPaddingLeft();
+        }
+
+        Log.d("TAG", "slideLeft: "+addAndRemoveProduct1.getPaddingLeft());
+        if (addAndRemoveProduct1.getPaddingLeft()>100){
+            addAndRemoveProduct1.setPadding(25,0,0,30);
+            slide.setImageResource(R.drawable.baseline_arrow_forward_ios_24);
+            addAndRemoveProduct.setVisibility(View.VISIBLE);
+            deleteData.setVisibility(View.VISIBLE);
+            updateData.setVisibility(View.VISIBLE);
+        }else{
+            addAndRemoveProduct1.setPadding(paddingL,0,0,30);
+            slide.setImageResource(R.drawable.baseline_arrow_back_ios_24);
+            addAndRemoveProduct.setVisibility(View.GONE);
+            deleteData.setVisibility(View.GONE);
+            updateData.setVisibility(View.GONE);
+
+        }
+
+    }
+
+
+
+
+
+    // Assuming you have a Firebase database reference
+//    DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference("products");
+
+// Add a TextWatcher to your search EditText
+//searchEditText.addTextChangedListener(new TextWatcher() {
+//        @Override
+//        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//        }
+//
+//        @Override
+//        public void onTextChanged(CharSequence s, int start, int before, int count) {
+//            // Filter the products based on the search query
+//            String searchText = s.toString().trim().toLowerCase();
+//            Query query = productsRef.orderByChild("name").startAt(searchText).endAt(searchText + "\uf8ff");
+//            query.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                    // Clear previous search results
+//                    productList.clear();
+//                    // Iterate through the search results and add them to the list
+//                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                        Product product = dataSnapshot.getValue(Product.class);
+//                        productList.add(product);
+//                    }
+//                    // Update the RecyclerView adapter
+//                    adapter.notifyDataSetChanged();
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//                    // Handle errors
+//                }
+//            });
+//        }
+//
+//        @Override
+//        public void afterTextChanged(Editable s) {
+//        }
+//    });
+//
+//
+//
+
+}
+
+
+
+

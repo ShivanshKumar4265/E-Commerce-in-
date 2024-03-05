@@ -2,7 +2,6 @@ package com.inventics.e_commerce.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -39,7 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Sign Up</font>"));
+
 
         intializingView();
 
@@ -67,6 +66,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 progressBar_sendOTP.setVisibility(View.VISIBLE);
                 sendOtpOnUserMobile();
+                enterYourNumber.setEnabled(false);
             }
         });
 
@@ -109,7 +109,6 @@ public class SignUpActivity extends AppCompatActivity {
                                 Log.d("i_firebaseException", e.getMessage().toString());
 
                             }
-
 
                             @Override
                             public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {

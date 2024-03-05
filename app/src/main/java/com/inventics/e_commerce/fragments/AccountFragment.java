@@ -9,10 +9,12 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.inventics.e_commerce.R;
+import com.inventics.e_commerce.activities.EditProfileActivity;
 import com.inventics.e_commerce.activities.SignUpActivity;
 
 public class AccountFragment extends Fragment {
@@ -20,6 +22,9 @@ public class AccountFragment extends Fragment {
     RelativeLayout logOut;
 
     TextView tv_logOut;
+
+    CardView editProfile;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -29,7 +34,7 @@ public class AccountFragment extends Fragment {
 
         handleOnClickListener();
 
-        return  view;
+        return view;
     }
 
     private void handleOnClickListener() {
@@ -49,6 +54,18 @@ public class AccountFragment extends Fragment {
             }
         });
 
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intentToEditProfileActivity();
+            }
+        });
+    }
+
+    private void intentToEditProfileActivity() {
+
+        startActivity(new Intent(getActivity(), EditProfileActivity.class));
+
 
 
     }
@@ -66,6 +83,7 @@ public class AccountFragment extends Fragment {
 
         logOut = view.findViewById(R.id.logOut);
         tv_logOut = view.findViewById(R.id.tv_logOut);
+        editProfile = view.findViewById(R.id.editProfile);
 
     }
 }

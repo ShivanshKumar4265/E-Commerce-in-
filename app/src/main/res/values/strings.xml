@@ -9,7 +9,6 @@
     <string name="edit_product_description">Edit Product Description</string>
     <string name="edit_product_price">Edit Product Price</string>
     <string name="update_product">Update Product</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dummy_email">Dummy Email</string>
     <string name="dummy_name">Dummy Name</string>
