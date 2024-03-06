@@ -12,11 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
-        android:gravity="center">
+        android:layout_marginEnd="15dp">
 
         <ImageView
-            android:foregroundGravity="center"
             android:id="@+id/back_shoppingCart"
             android:layout_width="45dp"
             android:layout_height="45dp"
@@ -25,28 +23,15 @@
             app:tint="@color/black" />
 
         <TextView
-            android:gravity="center"
-            android:id="@+id/edit_shoppingCart"
+            android:id="@+id/cart_productList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/arapey"
-            android:text="Edit"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
-
-        <TextView
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5sp"
-            android:layout_marginTop="5dp"
+            android:layout_marginStart="28sp"
             android:layout_toEndOf="@+id/back_shoppingCart"
             android:fontFamily="@font/aclonica"
             android:text="Shopping Cart"
             android:textColor="@color/black"
-            android:textSize="25sp" />
+            android:textSize="35sp" />
 
     </RelativeLayout>
 

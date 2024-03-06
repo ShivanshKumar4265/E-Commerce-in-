@@ -21,6 +21,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <ViewFlipper
                     android:id="@id/viewFlipper"
                     android:layout_width="match_parent"
@@ -29,8 +30,7 @@
                     android:layout_marginEnd="20dp"
                     android:flipInterval="2300"
                     android:inAnimation="@android:anim/slide_in_left"
-                    android:outAnimation="@android:anim/slide_out_right"
-                    >
+                    android:outAnimation="@android:anim/slide_out_right">
 
                     <ImageView
                         android:id="@+id/productImage1"
@@ -58,9 +58,6 @@
                         android:layout_marginEnd="20dp"
                         android:scaleType="fitCenter"
                         android:src="@drawable/baseline_ballot_24" />
-
-
-
                 </ViewFlipper>
 
 
@@ -146,14 +143,13 @@
                     android:textStyle="bold" />
 
 
-
                 <LinearLayout
                     android:id="@+id/descriptionAndCount"
                     android:layout_width="match_parent"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/titleAndRating"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:orientation="horizontal"
                     android:weightSum="4">
 
@@ -163,8 +159,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:layout_weight="4"
-                        android:text="@string/Product_Description"
                         android:scrollHorizontally="true"
+                        android:text="@string/Product_Description"
                         android:textSize="18sp"
                         android:typeface="monospace" />
                 </LinearLayout>
@@ -188,11 +184,11 @@
 
                     <TextView
                         android:id="@+id/numberOfProductAdded"
-                        android:gravity="center"
-                        android:layout_gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_weight="2"
+                        android:gravity="center"
                         android:text="    1    "
                         android:textColor="@color/black"
                         android:textSize="20sp"
@@ -223,8 +219,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:text="@string/Delete"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/updateData"
@@ -236,14 +231,10 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:text="@string/Update"
-            android:textSize="20sp"
-            />
-
+            android:textSize="20sp" />
 
 
     </RelativeLayout>
-
-
 
 
 </RelativeLayout>

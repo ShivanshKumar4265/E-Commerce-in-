@@ -70,12 +70,11 @@ public class AccountFragment extends Fragment {
                 binding.userContactNumber.setText(snapshot.child("phoneNumber").getValue().toString());
 
                 String imageUrl = snapshot.child("image").getValue().toString();
-                Glide.with(requireActivity())
+                Glide.with(requireContext())
                         .load(imageUrl)
                         .into(binding.circleImageView);
 
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

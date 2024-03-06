@@ -11,7 +11,6 @@ import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -24,6 +23,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,26 +35,32 @@ import com.inventics.e_commerce.R;
 import com.inventics.e_commerce.expanding_textview.MySpannable;
 import com.inventics.e_commerce.modal.Product;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+
 
 public class ProductDescriptionActivity extends AppCompatActivity {
     ImageView productImage1, productImage2, productImage3, addToCart, removeFromCart, slide;
-    int paddingL=0;
+    int paddingL = 0;
+    String uid;
     LinearLayout addAndRemoveProduct;
     RelativeLayout addAndRemoveProduct1;
     ViewFlipper viewFlipper;
     TextView productCategory, productTitle, productDescription, productPrice, productRateCount, numberOfProductAdded;
     RatingBar productRating;
-    Button deleteData, updateData;
-
-    int totalItem = 0;
+    ImageView deleteData, updateData, btn_addToCart;
+    int totalItem = 1;
     String p_id;
     SharedPreferences myPreferences;
 
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_description_test);
-//        getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Product Description</font>"));
 
         findingAllTheViewsById();
 
@@ -71,14 +79,12 @@ public class ProductDescriptionActivity extends AppCompatActivity {
                 deleteProductData();
             }
         });
-
         updateData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 updateProductData();
             }
         });
-
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +93,6 @@ public class ProductDescriptionActivity extends AppCompatActivity {
 
             }
         });
-
         removeFromCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,11 +100,42 @@ public class ProductDescriptionActivity extends AppCompatActivity {
                 setCount(totalItem);
             }
         });
-
         slide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 slideLeft(addAndRemoveProduct1);
+            }
+        });
+        btn_addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mAuth.getCurrentUser() != null) {
+                    // User is signed in
+                    uid = mAuth.getCurrentUser().getUid();
+                    Log.d("MainActivity", "User ID: " + uid);
+                } else {
+                    Log.d("MainActivity", "User is signed out");
+                }
+                String timestamp = getCurrentTimestamp();
+                databaseReference = firebaseDatabase.getReference().child("cart").child(uid);
+                HashMap<String,Object> cartData = new HashMap<>();
+                cartData.put("pro_key",p_id);
+                cartData.put("qty",totalItem);
+                cartData.put("timestamp",timestamp);
+//                assert key != null;
+                databaseReference.child(p_id).setValue(cartData).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(ProductDescriptionActivity.this, "Added successfully..", Toast.LENGTH_SHORT).show();
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(ProductDescriptionActivity.this, e + "", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
         });
 
@@ -112,6 +148,10 @@ public class ProductDescriptionActivity extends AppCompatActivity {
     }
 
     private void findingAllTheViewsById() {
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
         productImage1 = findViewById(R.id.productImage1);
         productImage2 = findViewById(R.id.productImage2);
         productImage3 = findViewById(R.id.productImage3);
@@ -122,8 +162,10 @@ public class ProductDescriptionActivity extends AppCompatActivity {
         productPrice = findViewById(R.id.productPrice);
         productRateCount = findViewById(R.id.productRateCount);
         productRating = findViewById(R.id.productRating);
+
         deleteData = findViewById(R.id.deleteData);
         updateData = findViewById(R.id.updateData);
+
         addAndRemoveProduct1 = findViewById(R.id.addAndRemoveProduct1);
 
         addToCart = findViewById(R.id.addToCart);
@@ -132,6 +174,20 @@ public class ProductDescriptionActivity extends AppCompatActivity {
 
         slide = findViewById(R.id.slide);
         addAndRemoveProduct = findViewById(R.id.addRemoveProduct);
+        btn_addToCart = findViewById(R.id.btn_addToCart);
+    }
+
+    private static String getCurrentTimestamp() {
+        // Get the current date and time
+        Date currentDate = new Date();
+
+        // Define the date format you want
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        // Format the date and time using the specified format
+        String formattedDate = dateFormat.format(currentDate);
+
+        return formattedDate;
     }
 
     private void gettingProductKeyViaSharedPreference() {
@@ -205,7 +261,6 @@ public class ProductDescriptionActivity extends AppCompatActivity {
         });
 
     }
-
 
     public static void makeTextViewResizable(final TextView tv, final int maxLine, final String expandText, final boolean viewMore) {
 
@@ -282,87 +337,40 @@ public class ProductDescriptionActivity extends AppCompatActivity {
 
     }
 
-
     private void setCount(int totalItem) {
 
 
-        if (totalItem >= 0) {
+        if (totalItem >= 1) {
             numberOfProductAdded.setText("  " + totalItem + "  ");
         }
 
     }
 
-
     private void slideLeft(View view) {
 
-        if (paddingL==0){
-            paddingL=addAndRemoveProduct1.getPaddingLeft();
+        if (paddingL == 0) {
+            paddingL = addAndRemoveProduct1.getPaddingLeft();
         }
 
-        Log.d("TAG", "slideLeft: "+addAndRemoveProduct1.getPaddingLeft());
-        if (addAndRemoveProduct1.getPaddingLeft()>100){
-            addAndRemoveProduct1.setPadding(25,0,0,30);
+        Log.d("TAG", "slideLeft: " + addAndRemoveProduct1.getPaddingLeft());
+        if (addAndRemoveProduct1.getPaddingLeft() > 100) {
+            addAndRemoveProduct1.setPadding(25, 0, 0, 30);
             slide.setImageResource(R.drawable.baseline_arrow_forward_ios_24);
             addAndRemoveProduct.setVisibility(View.VISIBLE);
             deleteData.setVisibility(View.VISIBLE);
             updateData.setVisibility(View.VISIBLE);
-        }else{
-            addAndRemoveProduct1.setPadding(paddingL,0,0,30);
+            btn_addToCart.setVisibility(View.VISIBLE);
+        } else {
+            addAndRemoveProduct1.setPadding(paddingL, 0, 0, 30);
             slide.setImageResource(R.drawable.baseline_arrow_back_ios_24);
             addAndRemoveProduct.setVisibility(View.GONE);
             deleteData.setVisibility(View.GONE);
             updateData.setVisibility(View.GONE);
+            btn_addToCart.setVisibility(View.GONE);
 
         }
 
     }
-
-
-
-
-
-    // Assuming you have a Firebase database reference
-//    DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference("products");
-
-// Add a TextWatcher to your search EditText
-//searchEditText.addTextChangedListener(new TextWatcher() {
-//        @Override
-//        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//        }
-//
-//        @Override
-//        public void onTextChanged(CharSequence s, int start, int before, int count) {
-//            // Filter the products based on the search query
-//            String searchText = s.toString().trim().toLowerCase();
-//            Query query = productsRef.orderByChild("name").startAt(searchText).endAt(searchText + "\uf8ff");
-//            query.addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                    // Clear previous search results
-//                    productList.clear();
-//                    // Iterate through the search results and add them to the list
-//                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                        Product product = dataSnapshot.getValue(Product.class);
-//                        productList.add(product);
-//                    }
-//                    // Update the RecyclerView adapter
-//                    adapter.notifyDataSetChanged();
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//                    // Handle errors
-//                }
-//            });
-//        }
-//
-//        @Override
-//        public void afterTextChanged(Editable s) {
-//        }
-//    });
-//
-//
-//
 
 }
 
