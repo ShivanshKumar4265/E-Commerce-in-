@@ -6,7 +6,6 @@
     android:layout_height="match_parent">
 
 
-
     <ViewFlipper
         android:id="@id/viewFlipper"
         android:layout_width="match_parent"
@@ -43,74 +42,74 @@
 
     </ViewFlipper>
 
-   <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_alignStart="@+id/viewFlipper"
-       android:layout_height="?actionBarSize"
-       android:gravity="center_vertical">
-       <ImageView
-           android:id="@+id/back"
-           android:background="@drawable/cirecular_background"
-           android:layout_width="30sp"
-           android:backgroundTint="@color/black"
-           android:layout_height="30sp"
-           android:padding="5sp"
-           android:layout_alignParentStart="true"
-           android:layout_alignParentTop="true"
-           android:layout_marginStart="10dp"
-           app:tint="@color/white"
-           android:src="@drawable/back" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_alignStart="@+id/viewFlipper"
+        android:gravity="center_vertical">
 
-       <TextView
-           android:layout_width="match_parent"
-           android:layout_height="30sp"
-           android:visibility="gone"
-           android:layout_alignParentTop="true"
-           android:layout_toStartOf="@+id/more"
-           android:layout_toEndOf="@+id/back"
-           android:gravity="center_vertical"
-           android:textStyle="bold"
-           android:paddingLeft="10dp"
-           android:paddingRight="10dp"
-           android:text="@string/Product_Description"
-           android:textColor="@color/black"
-           android:textSize="14sp" />
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/cirecular_background"
+            android:backgroundTint="@color/black"
+            android:padding="5sp"
+            android:src="@drawable/back"
+            app:tint="@color/white" />
 
-       <ImageView
-           android:id="@+id/more"
-           android:layout_alignParentEnd="true"
-           android:layout_marginEnd="10dp"
-           android:layout_width="30sp"
-           android:backgroundTint="@color/black"
-           android:layout_height="30sp"
-           android:src="@drawable/more"
-           app:tint="@color/black" />
-   </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30sp"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/more"
+            android:layout_toEndOf="@+id/back"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/Product_Description"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/more"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/more"
+            app:tint="@color/black" />
+    </RelativeLayout>
 
 
     <RelativeLayout
         android:id="@+id/productData"
         android:layout_width="match_parent"
-        android:elevation="20dp"
-        android:outlineSpotShadowColor="@color/black"
-        android:outlineAmbientShadowColor="@color/black"
         android:layout_height="match_parent"
         android:layout_below="@id/viewFlipper"
         android:layout_marginTop="-47dp"
+        android:background="@drawable/corner_radius_layout"
         android:backgroundTint="@color/white"
-        android:background="@drawable/corner_radius_layout">
+        android:elevation="20dp"
+        android:outlineAmbientShadowColor="@color/black"
+        android:outlineSpotShadowColor="@color/black">
 
         <LinearLayout
-            android:layout_marginTop="30dp"
             android:id="@+id/categoryAndRatingBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="20dp"
             android:orientation="horizontal"
             android:weightSum="4">
 
             <TextView
-                android:textColor="@color/black"
                 android:id="@+id/productCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -119,6 +118,7 @@
                 android:layout_marginEnd="20dp"
                 android:layout_weight="3"
                 android:text="Category"
+                android:textColor="@color/black"
                 android:textSize="15sp" />
 
             <RatingBar
@@ -157,7 +157,6 @@
 
             <TextView
                 android:id="@+id/productRateCount"
-                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/productRating"
@@ -166,14 +165,14 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="5dp"
                 android:layout_weight="1"
-                android:text="Rated by 100" />
+                android:text="Rated by 100"
+                android:textColor="@color/black" />
 
 
         </LinearLayout>
 
         <TextView
             android:id="@+id/productPrice"
-            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/descriptionAndCount"
@@ -182,114 +181,75 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
             android:text="100 INR"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
-
 
 
         <LinearLayout
             android:id="@+id/descriptionAndCount"
             android:layout_width="match_parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/titleAndRating"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:orientation="horizontal"
             android:weightSum="4">
 
             <TextView
                 android:id="@+id/productDescription"
-                android:textColor="@color/black"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:layout_weight="4"
-                android:text="@string/Product_Description"
                 android:scrollHorizontally="true"
+                android:text="@string/Product_Description"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:typeface="monospace" />
         </LinearLayout>
 
-
-<!--        <LinearLayout-->
-<!--            android:id="@+id/addRemoveProduct"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="20dp"-->
-<!--            android:layout_below="@+id/descriptionAndCount"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:layout_marginEnd="20dp"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:weightSum="4">-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/removeFromCart"-->
-<!--                android:layout_width="30dp"-->
-<!--                android:layout_height="30dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:src="@drawable/minus" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/numberOfProductAdded"-->
-<!--                android:gravity="center"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="2"-->
-<!--                android:text="    1    "-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="20sp"-->
-<!--                android:textStyle="bold" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/addToCart"-->
-<!--                android:layout_width="30dp"-->
-<!--                android:layout_height="25dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:src="@drawable/baseline_add_24" />-->
-
-<!--        </LinearLayout>-->
-
-
     </RelativeLayout>
 
     <RelativeLayout
-        android:elevation="20dp"
-        android:outlineSpotShadowColor="@color/black"
         android:id="@+id/addAndRemoveProduct1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="100dp"
+        android:elevation="20dp"
+        android:outlineSpotShadowColor="@color/black"
         android:paddingStart="350dp">
+
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
             android:background="@drawable/corner_rect_layout"
             android:backgroundTint="@color/black"
-            android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:weightSum="4"
-            android:layout_height="50dp">
+            android:weightSum="4">
 
             <ImageView
                 android:id="@+id/slide"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/productData"
-                android:layout_marginLeft="15sp"
                 android:layout_gravity="center_vertical"
-                android:tint="@color/white"
+                android:layout_marginLeft="15sp"
                 android:src="@drawable/baseline_arrow_back_ios_24"
+                android:tint="@color/white"
                 tools:ignore="UseAppTint" />
 
             <LinearLayout
                 android:id="@+id/addRemoveProduct"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
                 android:layout_below="@+id/descriptionAndCount"
                 android:layout_alignParentEnd="true"
+                android:layout_gravity="center_vertical"
                 android:layout_marginEnd="20dp"
-                android:visibility="gone"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/removeFromCart"
@@ -300,11 +260,11 @@
 
                 <TextView
                     android:id="@+id/numberOfProductAdded"
-                    android:gravity="center"
-                    android:layout_gravity="center"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="2"
+                    android:gravity="center"
                     android:text="1"
                     android:textColor="@color/Cream"
                     android:textSize="20sp"
@@ -321,26 +281,25 @@
 
             <Button
                 android:id="@+id/deleteData"
-                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/productData"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
+                android:layout_weight="1"
                 android:text="@string/Delete"
-                android:visibility="gone"
-
                 android:textSize="12sp"
-                />
+
+                android:visibility="gone" />
 
             <Button
-                android:layout_weight="1"
                 android:id="@+id/updateData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/deleteData"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
+                android:layout_weight="1"
                 android:text="@string/Update"
                 android:textSize="12sp"
                 android:visibility="gone"

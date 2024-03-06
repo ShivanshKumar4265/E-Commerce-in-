@@ -23,12 +23,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.inventics.e_commerce.databinding.ActivityEditProfileBinding;
+import com.inventics.e_commerce.databinding.ActivityCreateProfileActivtyBinding;
 
 import java.util.HashMap;
 
-public class EditProfileActivity extends AppCompatActivity {
-    ActivityEditProfileBinding binding;
+public class CreateProfileActivity extends AppCompatActivity {
+    ActivityCreateProfileActivtyBinding binding;
     FirebaseUser currentUser;
     DatabaseReference databaseReference;
     StorageReference storageReference;
@@ -37,14 +37,14 @@ public class EditProfileActivity extends AppCompatActivity {
     String imageUrl;
     private static final int REQUEST_IMAGE_PICK = 100;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityEditProfileBinding.inflate(getLayoutInflater());
+        binding = ActivityCreateProfileActivtyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         handleOnClickListener();
-
     }
 
     private void handleOnClickListener() {
@@ -59,7 +59,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
                     String email = binding.enterEmail.getText().toString();
                     String enterShippingAddress = binding.enterShippingAddress.getText().toString();
-                    getUserData(name, email, enterShippingAddress);;
+                    getUserData(name, email, enterShippingAddress);
                 }else {
                     uploadImageToFirebaseStorage(uri);
                 }
@@ -101,19 +101,21 @@ public class EditProfileActivity extends AppCompatActivity {
             userData.put("address", enterShippingAddress);
 //            Log.i("7894",imageUrl);
             userData.put("image", imageUrl);
-            userData.put("phoneNumber", currentUser.getPhoneNumber());
+            userData.put("phoneNUmber", currentUser.getPhoneNumber());
             databaseReference.setValue(userData).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
-                    Toast.makeText(EditProfileActivity.this, "Uploaded Successfully. . ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateProfileActivity.this, "Uploaded Successfully. . ", Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
-                    getOnBackPressedDispatcher().onBackPressed();
+//                    getOnBackPressedDispatcher().onBackPressed();
+
+                    startActivity(new Intent(CreateProfileActivity.this,MainActivity.class));
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     progressDialog.dismiss();
-                    Toast.makeText(EditProfileActivity.this, "Some thing went wrong. . .", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateProfileActivity.this, "Some thing went wrong. . .", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -137,7 +139,6 @@ public class EditProfileActivity extends AppCompatActivity {
             // The selected image URI can be obtained from data.getData()
         }
     }
-
     private void uploadImageToFirebaseStorage(Uri imageUri) {
         showProgressDialog("Uploading . . . ");
         // File name in Firebase Storage (you can change it as needed)
@@ -171,15 +172,17 @@ public class EditProfileActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         // Image upload failed
-                        Toast.makeText(EditProfileActivity.this, "Image upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreateProfileActivity.this, "Image upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
     private void showProgressDialog(String message) {
-        progressDialog = new ProgressDialog(EditProfileActivity.this);
+        progressDialog = new ProgressDialog(CreateProfileActivity.this);
         progressDialog.setMessage(message);
         progressDialog.setCancelable(false);
         progressDialog.show();
     }
+
+
 }
