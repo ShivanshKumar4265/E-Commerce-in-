@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:outlineSpotShadowColor="@color/white"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:outlineSpotShadowColor="@color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -38,12 +37,12 @@
             android:id="@+id/cart_productTitle"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
-            android:maxLines="1"
             android:layout_marginStart="20dp"
-            android:textSize="18sp"
             android:layout_marginTop="40dp"
             android:layout_toEndOf="@+id/ll_cartProductImage"
             android:hint="Product Title"
+            android:maxLines="1"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
@@ -77,20 +76,20 @@
             android:layout_marginTop="8dp"
             android:layout_toEndOf="@+id/cart_productQuantity"
             android:hint="20"
-            android:textStyle="bold"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/totalPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/cart_NoOfProduct"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
             android:layout_toEndOf="@+id/ll_cartProductImage"
             android:hint="INR 500"
-            android:textStyle="bold"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 

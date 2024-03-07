@@ -26,14 +26,11 @@ import java.util.ArrayList;
 public class ProductDataAdapter extends RecyclerView.Adapter<ProductDataAdapter.ViewHolder>{
     Context context;
     ArrayList<Product> data;
-
-
     @NonNull
     @Override
     public ProductDataAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.product_layout, null));
     }
-
     @Override
     public void onBindViewHolder(@NonNull ProductDataAdapter.ViewHolder holder, int position) {
         holder.productTitle.setText(data.get(position).getTitle());

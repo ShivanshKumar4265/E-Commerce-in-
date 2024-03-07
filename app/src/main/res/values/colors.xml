@@ -64,5 +64,6 @@
     <color name="material_cyan_900">#006064</color>
     <color name="material_teal_900">#004D40</color>
     <color name="material_green_900">#1B5E20</color>
+    <color name="light_purple">#dfd6ef</color>
 
 </resources>
