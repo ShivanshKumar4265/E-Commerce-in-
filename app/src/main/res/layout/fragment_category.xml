@@ -36,6 +36,7 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_categories"
         tools:listitem="@layout/categories_item_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

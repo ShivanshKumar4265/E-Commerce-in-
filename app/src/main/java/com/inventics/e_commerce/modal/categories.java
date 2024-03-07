@@ -7,11 +7,14 @@ public class categories {
         this.category = category;
     }
 
-    public String getCategories() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategories(String category) {
+    public void setCategory(String category) {
         this.category = category;
+    }
+
+    public categories() {
     }
 }

@@ -1,9 +1,11 @@
 package com.inventics.e_commerce.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,7 +29,25 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull CategoryAdapter.ViewHolder holder, int position) {
-            holder.categoryChip.setText(data.get(position).getCategories());
+        Log.i("8826",data.toString());
+
+        Log.i("8825",data.get(position).getCategory().toString());
+            holder.categoryChip.setText(data.get(position).getCategory());
+
+            holder.categoryChip.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, data.get(position).getCategory(), Toast.LENGTH_SHORT).show();
+                }
+            });
+    }
+
+    public CategoryAdapter(Context context, ArrayList<categories> data) {
+        this.context = context;
+        this.data = data;
+    }
+
+    public CategoryAdapter() {
     }
 
     @Override
@@ -40,7 +60,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         Chip categoryChip;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            categoryChip = itemView.findViewById(R.id.categories);
+            categoryChip = itemView.findViewById(R.id.chip_categories);
         }
     }
 
